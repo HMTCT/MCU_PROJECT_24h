@@ -20,14 +20,10 @@ void fsm_for_countdown(){
 				COUNTER--;
 				if (COUNTER < 0){
 					COUNTER = 0;
-					display7SEG(COUNTER);
-					MODE = STOP;
 				}
 				display7SEG(COUNTER);
 				setTimer0(1000);
 			}
-			break;
-		case STOP:
 			break;
 		default:
 			break;
