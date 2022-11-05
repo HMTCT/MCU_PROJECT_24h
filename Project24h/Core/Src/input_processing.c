@@ -15,14 +15,29 @@ enum ButtonState buttonState[NO_OF_BUTTONS] = {BUTTON_RELEASED};
 
 
 void fsm_for_input_processing(void){
-	for (int i = 0; i < NO_OF_BUTTONS; ++i){
+	for (int i = 0; i < NO_OF_BUTTONS; i++){
 		switch(buttonState[i]){
 			case BUTTON_RELEASED:
 				if(is_button_pressed(i)){
 					buttonState[i] = BUTTON_PRESSED;
-					update_processing(i);
+
+					switch (i) {
+						case 0:
+							MODE = RESET_MODE;
+							break;
+						case 1:
+							MODE = INC_MODE;
+							break;
+						case 2:
+							MODE = DEC_MODE;
+							break;
+						default:
+							break;
+					}
+
 				}
 				break;
+
 			case BUTTON_PRESSED:
 				if(!is_button_pressed(i)){
 					buttonState[i] = BUTTON_RELEASED;
@@ -43,33 +58,17 @@ void fsm_for_input_processing(void){
 					}
 				}
 				break;
+
 			case BUTTON_PRESSED_MORE_THAN_1_SECOND:
 				if(!is_button_pressed(i)){
 					buttonState[i] = BUTTON_RELEASED;
 					setTimer0(10);
 					MODE = WAIT_MODE;
 				}
-
 				break;
 			default:
 				break;
 			}
-	}
-}
-
-void update_processing(int BUTTON){
-	switch (BUTTON) {
-		case 0:
-			MODE = RESET_MODE;
-			break;
-		case 1:
-			//MODE = INC_MODE;
-			break;
-		case 2:
-			//MODE = DEC_MODE;
-			break;
-		default:
-			break;
 	}
 }
 

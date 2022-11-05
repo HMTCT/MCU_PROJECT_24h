@@ -98,10 +98,17 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  setTimer2(1000);
   while (1)
   {
-	  fsm_for_input_processing();
 	  fsm_for_display7SEG();
+	  fsm_for_input_processing();
+
+	  //LED BLINKING FOR DEBUGGING
+	  if (timer2_flag == 1){
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		  setTimer2(1000);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

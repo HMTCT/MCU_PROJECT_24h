@@ -27,4 +27,5 @@ extern int COUNTER;
 extern int MODE;
 
 
+
 #endif /* INC_GLOBAL_H_ */
