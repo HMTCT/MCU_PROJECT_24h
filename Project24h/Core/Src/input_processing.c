@@ -20,7 +20,7 @@ void fsm_for_input_processing(void){
 			case BUTTON_RELEASED:
 				if(is_button_pressed(i)){
 					buttonState[i] = BUTTON_PRESSED;
-
+					//Update MODE
 					switch (i) {
 						case 0:
 							MODE = RESET_MODE;
@@ -34,6 +34,8 @@ void fsm_for_input_processing(void){
 						default:
 							break;
 					}
+					//Refresh led for debugging
+					setTimer2(10);
 				}
 				break;
 
@@ -44,7 +46,6 @@ void fsm_for_input_processing(void){
 				else {
 					if(is_button_pressed_1s(i)){
 						buttonState[i] = BUTTON_PRESSED_MORE_THAN_1_SECOND;
-						setTimer1(10);
 						switch (i) {
 							case 1:
 								MODE = AUTO_INC;
@@ -54,6 +55,10 @@ void fsm_for_input_processing(void){
 							default:
 								break;
 						}
+						//Set timer for fsm_long_press
+						setTimer1(10);
+						//Refresh led for debugging
+						setTimer2(10);
 					}
 				}
 				break;
@@ -61,7 +66,12 @@ void fsm_for_input_processing(void){
 			case BUTTON_PRESSED_MORE_THAN_1_SECOND:
 				if(!is_button_pressed(i)){
 					buttonState[i] = BUTTON_RELEASED;
+
+					//Reset timer for time out
 					setTimer0(10);
+					//Refresh led for debugging
+					setTimer2(10);
+
 					MODE = WAIT_MODE;
 				}
 				break;

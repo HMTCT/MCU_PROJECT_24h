@@ -96,7 +96,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer2(1000);
+
   while (1)
   {
 	  fsm_for_countdown();

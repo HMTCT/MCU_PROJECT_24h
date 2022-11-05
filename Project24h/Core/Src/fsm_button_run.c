@@ -13,6 +13,7 @@ void fsm_for_countdown(){
 		case INIT:
 			MODE = NORMAL_MODE;
 			setTimer0(10);
+			setTimer2(10);
 			break;
 		case NORMAL_MODE:
 			if (timer0_flag == 1){
