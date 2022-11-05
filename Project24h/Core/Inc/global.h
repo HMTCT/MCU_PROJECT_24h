@@ -22,6 +22,8 @@
 
 #define WAIT_MODE		10
 
+#define STOP			15
+
 extern int COUNTER;
 
 extern int MODE;

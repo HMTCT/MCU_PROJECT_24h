@@ -18,11 +18,16 @@ void fsm_for_countdown(){
 		case NORMAL_MODE:
 			if (timer0_flag == 1){
 				COUNTER--;
-				if (COUNTER < 0)
-					COUNTER = 9;
+				if (COUNTER < 0){
+					COUNTER = 0;
+					display7SEG(COUNTER);
+					MODE = STOP;
+				}
 				display7SEG(COUNTER);
 				setTimer0(1000);
 			}
+			break;
+		case STOP:
 			break;
 		default:
 			break;
