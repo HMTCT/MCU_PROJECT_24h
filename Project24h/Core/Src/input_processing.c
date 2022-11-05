@@ -34,7 +34,6 @@ void fsm_for_input_processing(void){
 						default:
 							break;
 					}
-
 				}
 				break;
 

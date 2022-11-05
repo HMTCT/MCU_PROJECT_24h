@@ -24,9 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "input_processing.h"
 #include "input_reading.h"
-#include "timer.h"
-#include "display7SEG.h"
-#include "global.h"
+#include "fsm_button_run.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,7 +99,9 @@ int main(void)
   setTimer2(1000);
   while (1)
   {
-	  fsm_for_display7SEG();
+	  fsm_for_countdown();
+	  fsm_for_setting_mode();
+	  fsm_for_long_press();
 	  fsm_for_input_processing();
 
 	  //LED BLINKING FOR DEBUGGING
