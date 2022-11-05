@@ -10,7 +10,12 @@
 
 #include "input_reading.h"
 #include "global.h"
+#include "timer.h"
+
 
 void fsm_for_input_processing(void);
+
+void update_processing(int BUTTON);
+
 
 #endif /* INC_INPUT_PROCESSING_H_ */

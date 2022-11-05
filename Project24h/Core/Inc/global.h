@@ -8,28 +8,23 @@
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_
 
+#define INIT			0
 
-#define INIT 			0
-#define AUTO_RED 		1
-#define AUTO_GREEN 		2
-#define AUTO_YELLOW 	3
+#define NORMAL_MODE		1
 
-#define MAN_RED 		12
-#define MAN_GREEN 		13
-#define MAN_YELLOW 		14
+#define INC_MODE		2
+#define DEC_MODE		3
 
-extern int status1;
-extern int status2;
+#define AUTO_INC		4
+#define AUTO_DEC		5
 
-extern int RED_DURATION;
-extern int YELLOW_DURATION;
-extern int GREEN_DURATION;
+#define RESET_MODE		6
+
+#define WAIT_MODE		10
+
+extern int COUNTER;
 
 extern int MODE;
 
-extern int led_buffer[4];
-
-extern int countdown1;
-extern int countdown2;
 
 #endif /* INC_GLOBAL_H_ */

@@ -24,6 +24,9 @@
 /* USER CODE BEGIN Includes */
 #include "input_processing.h"
 #include "input_reading.h"
+#include "timer.h"
+#include "display7SEG.h"
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,6 +101,7 @@ int main(void)
   while (1)
   {
 	  fsm_for_input_processing();
+	  fsm_for_display7SEG();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -212,8 +216,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_RED_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RESET_BUTTON_Pin INC_BUTTON_Pin DEC_BUTTON_Pin */
-  GPIO_InitStruct.Pin = RESET_BUTTON_Pin|INC_BUTTON_Pin|DEC_BUTTON_Pin;
+  /*Configure GPIO pins : BUTTON_1_Pin BUTTON_2_Pin BUTTON_3_Pin */
+  GPIO_InitStruct.Pin = BUTTON_1_Pin|BUTTON_2_Pin|BUTTON_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

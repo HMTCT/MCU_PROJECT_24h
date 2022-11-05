@@ -19,7 +19,8 @@ void fsm_for_input_processing(void){
 		switch(buttonState[i]){
 			case BUTTON_RELEASED:
 				if(is_button_pressed(i)){
-
+					buttonState[i] = BUTTON_PRESSED;
+					update_processing(i);
 				}
 				break;
 			case BUTTON_PRESSED:
@@ -29,22 +30,46 @@ void fsm_for_input_processing(void){
 				else {
 					if(is_button_pressed_1s(i)){
 						buttonState[i] = BUTTON_PRESSED_MORE_THAN_1_SECOND;
+						setTimer1(10);
+						switch (i) {
+							case 1:
+								MODE = AUTO_INC;
+								break;
+							case 2:
+								MODE = AUTO_DEC;
+							default:
+								break;
+						}
 					}
 				}
 				break;
 			case BUTTON_PRESSED_MORE_THAN_1_SECOND:
 				if(!is_button_pressed(i)){
 					buttonState[i] = BUTTON_RELEASED;
+					setTimer0(10);
+					MODE = WAIT_MODE;
 				}
 
-				else{
-					//TODO
-
-				}
 				break;
 			default:
 				break;
 			}
+	}
+}
+
+void update_processing(int BUTTON){
+	switch (BUTTON) {
+		case 0:
+			MODE = RESET_MODE;
+			break;
+		case 1:
+			//MODE = INC_MODE;
+			break;
+		case 2:
+			//MODE = DEC_MODE;
+			break;
+		default:
+			break;
 	}
 }
 
